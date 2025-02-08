@@ -1,0 +1,195 @@
+img,
+video {
+  pointer-events: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: inherit;
+}
+
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active {
+  outline: none;
+}
+
+html,
+body {
+  overflow: hidden;
+  background-color: #ADF0F0;
+}
+
+img::selection {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::selection {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::-moz-selection {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* ------------------ */
+
+.welcome-screen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 900000000;
+  background-color: rgba(0, 6, 2, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+
+.welcome-screen.hidden {
+  display: none;
+}
+
+
+.background-image-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-holder {
+  position: relative;
+  height: 100vh;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-image {
+  height: 100vh;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.house-image-container {
+  position: absolute;
+  top: 63%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  width: 12%;
+  height: auto;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  /* Smooth transition */
+}
+
+.house-image-container:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(63, 255, 30, 0.8));
+  /* Soft glow */
+}
+
+.house-image-container img {
+  width: 100%;
+  height: auto;
+}
+
+/* Default size for the speaker icon */
+#audio-icon {
+  width: 70px;
+  /* Example width */
+  height: 70px;
+  /* Example height */
+}
+
+/* Styles for the audio toggle div */
+.audio-toggle {
+  cursor: pointer;
+  position: fixed;
+  z-index: 9000;
+  right: 30px;
+  top: 20px;
+  background-color: rgba(127, 255, 212, 0);
+}
+
+
+.disabled-house-image-container {
+  position: absolute;
+  top: 63%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 12%;
+  height: auto;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.disabled-house-image-container:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+
+.disabled-house-image-container img {
+  width: 100%;
+  height: auto;
+  filter: brightness(50%);
+}
+
+.lottie-box {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 50%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+}
+
+.disabled-house-image-container img.shake {
+  animation: shake 0.27s ease;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(5deg);
+  }
+
+  50% {
+    transform: rotate(-5deg);
+  }
+
+  75% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
