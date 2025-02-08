@@ -64,7 +64,6 @@ img::selection {
   display: none;
 }
 
-
 .background-image-container {
   position: fixed;
   top: 0;
@@ -74,6 +73,7 @@ img::selection {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 180px;
   overflow: hidden;
 }
 
@@ -83,33 +83,53 @@ img::selection {
   width: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .background-image {
-  height: 100vh;
+  height: 125vh;
   width: auto;
   object-fit: contain;
   display: block;
+  object-position: bottom;
 }
 
 .house-image-container {
   position: absolute;
-  top: 63%;
-  left: 38%;
   transform: translate(-50%, -50%);
   width: 12%;
   height: auto;
   cursor: pointer;
   transform-origin: center;
-  transition: transform 0.2s ease, filter 0.2s ease;
-  /* Smooth transition */
+  transition: all 0.2s ease;
 }
+
+.x-house {
+  top: 52%;
+  left: 40%;
+  width: 8%;
+}
+
+.dc-stone {
+  top: 74%;
+  left: 40.8%;
+  width: 6%;
+}
+
+.x-coach {
+  top: 37%;
+  left: 61%;
+  width: 8%;
+}
+
 
 .house-image-container:hover {
   transform: translate(-50%, -50%) scale(1.05);
   filter: drop-shadow(0 0 15px rgba(63, 255, 30, 0.8));
-  /* Soft glow */
+}
+
+.house-image-container:active {
+  filter: brightness(90%);
 }
 
 .house-image-container img {
@@ -117,15 +137,11 @@ img::selection {
   height: auto;
 }
 
-/* Default size for the speaker icon */
 #audio-icon {
   width: 70px;
-  /* Example width */
   height: 70px;
-  /* Example height */
 }
 
-/* Styles for the audio toggle div */
 .audio-toggle {
   cursor: pointer;
   position: fixed;
@@ -135,23 +151,58 @@ img::selection {
   background-color: rgba(127, 255, 212, 0);
 }
 
+.audio-toggle:active {
+  filter: brightness(80%);
+}
 
 .disabled-house-image-container {
   position: absolute;
-  top: 63%;
-  left: 60%;
+
   transform: translate(-50%, -50%);
-  width: 12%;
+
   height: auto;
   cursor: pointer;
   transform-origin: center;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.brow-house {
+  top: 63%;
+  left: 54%;
+  width: 9%;
+}
+
+.tree {
+  top: 34%;
+  left: 48.5%;
+  width: 14.5%;
+}
+
+.cyan {
+  top: 22%;
+  left: 37%;
+  width: 9.2%;
+}
+
+.rocket {
+  top: 10%;
+  left: 45%;
+  width: 4.5%;
+}
+
+.hospital {
+  top: 13%;
+  left: 54%;
+  width: 9%;
 }
 
 .disabled-house-image-container:hover {
   transform: translate(-50%, -50%) scale(1.05);
 }
 
+.disabled-house-image-container:active {
+  filter: brightness(90%);
+}
 
 .disabled-house-image-container img {
   width: 100%;
@@ -160,12 +211,36 @@ img::selection {
 }
 
 .lottie-box {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   position: absolute;
+  transform: translate(-50%, -50%);
+  flex-shrink: 0;
+}
+
+.brown-house-lock {
   top: 50%;
   left: 57%;
-  transform: translate(-50%, -50%);
+}
+
+.tree-lock {
+  top: 34%;
+  left: 46%;
+}
+
+.cyan-lock {
+  top: 34%;
+  left: 46%;
+}
+
+.rocket-lock {
+  top: 50%;
+  left: 51%;
+}
+
+.hospital-lock {
+  top: 47%;
+  left: 58%;
 }
 
 .disabled-house-image-container img.shake {

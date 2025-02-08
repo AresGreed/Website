@@ -29,21 +29,77 @@
 
     <div class="image-holder">
 
-      <img src="images/3.webp" alt="bck" class="background-image">
+      <img src="images/background.webp" alt="bck" class="background-image">
+
 
       <a href="https://x.com/SproutCitizens" target="_blank">
-        <div class="house-image-container">
-          <img src="images/house test.webp" alt="house">
+        <div class="house-image-container x-house">
+          <img src="images/x-house.webp" alt="house">
         </div>
       </a>
 
+      <a href="https://discord.gg/sprout" target="_blank">
+        <div class="house-image-container dc-stone">
+          <img src="images/Discord.webp" alt="house">
+        </div>
+      </a>
 
-      <div class="disabled-house-image-container" onclick="playLottie()">
-        <img src="images/locked-house-test.webp" alt="house">
+      <a href="https://www.xcoach.ai/" target="_blank">
+        <div class="house-image-container x-coach">
+          <img src="images/x-coach.webp" alt="house">
+        </div>
+      </a>
+
+      <div class="disabled-house-image-container brow-house" onclick="playLottie(this)">
+        <img src="images/brown-house.webp" alt="house">
         <div class="lock-lottie-container">
           <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
             type="module"></script>
-          <dotlottie-player id="lockLottie" class="lottie-box"
+          <dotlottie-player class="lottie-box brown-house-lock"
+            src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
+            speed="1"></dotlottie-player>
+        </div>
+      </div>
+
+      <div class="disabled-house-image-container tree" onclick="playLottie(this)">
+        <img src="images/tree.webp" alt="house">
+        <div class="lock-lottie-container">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+          <dotlottie-player class="lottie-box tree-lock"
+            src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
+            speed="1"></dotlottie-player>
+        </div>
+      </div>
+
+      <div class="disabled-house-image-container cyan" onclick="playLottie(this)">
+        <img src="images/cyan.webp" alt="house">
+        <div class="lock-lottie-container">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+          <dotlottie-player class="lottie-box cyan-lock"
+            src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
+            speed="1"></dotlottie-player>
+        </div>
+      </div>
+
+      <div class="disabled-house-image-container rocket" onclick="playLottie(this)">
+        <img src="images/rocket.webp" alt="house">
+        <div class="lock-lottie-container">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+          <dotlottie-player class="lottie-box rocket-lock"
+            src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
+            speed="1"></dotlottie-player>
+        </div>
+      </div>
+
+      <div class="disabled-house-image-container hospital" onclick="playLottie(this)">
+        <img src="images/hospital.webp" alt="house">
+        <div class="lock-lottie-container">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+          <dotlottie-player class="lottie-box hospital-lock"
             src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
             speed="1"></dotlottie-player>
         </div>
@@ -51,13 +107,13 @@
 
 
 
-
-
     </div>
-
   </div>
 
-  <!-- Div to toggle audio -->
+
+
+
+
   <div class="audio-toggle" id="audio-toggle">
     <img src="images/SPEAKER-2.webp" id="audio-icon" alt="Speaker Icon">
   </div>
@@ -78,44 +134,35 @@
   <audio id="lockSound" src="music/locked.MP3" preload="auto"></audio>
 
 
-
-
   <script>
-    function playLottie() {
-      const houseImage = document.querySelector('.disabled-house-image-container img');
-      const lottie = document.getElementById('lockLottie');
-      const lockSound = document.getElementById('lockSound');  // Get the audio element
 
-      // Play the lock sound only if the audio is not muted
-      if (!isMuted) {
-        lockSound.play();
-      }
+    document.addEventListener("visibilitychange", () => {
+      document.hidden ? audio.pause() : !isMuted && audio.play();
+    });
 
-      // Add the shake effect to the house image
+    function playLottie(element) {
+      const houseImage = element.querySelector('img');
+      const lottie = element.querySelector('.lock-lottie-container dotlottie-player');
+      const lockSound = document.getElementById('lockSound');
+
+      if (!isMuted) lockSound.play();
+
       houseImage.classList.add('shake');
-
-      // Stop and play the Lottie animation
       lottie.stop();
       lottie.play();
 
-      // Remove the shake effect after 0.3s (duration of animation)
-      setTimeout(() => {
-        houseImage.classList.remove('shake');
-      }, 300);
+      setTimeout(() => houseImage.classList.remove('shake'), 300);
     }
 
-    window.onload = function () {
-      // Check if the user has already closed the welcome screen
+
+    window.onload = () => {
       if (!localStorage.getItem('welcomeClosed')) {
         document.querySelector('.welcome-screen').classList.remove('hidden');
       }
-
-      // Try starting audio after page load
       startAudio();
     };
 
     function closeWelcomeScreen() {
-      // Hide the welcome screen and remember the action
       document.querySelector('.welcome-screen').classList.add('hidden');
       localStorage.setItem('welcomeClosed', 'true');
     }
@@ -126,14 +173,11 @@
     const clickSound = document.getElementById("click-sound");
     const releaseSound = document.getElementById("release-sound");
 
-    let isMuted = localStorage.getItem('audioMuted') === 'true'; // Retrieve the muted state from localStorage
+    let isMuted = localStorage.getItem('audioMuted') === 'true';
 
-    // Function to fade volume
     function fadeAudio(targetVolume, callback) {
       let currentVolume = audio.volume;
-      const fadeTime = 300; // 0.3 seconds
-      const steps = 30;
-      const volumeStep = (currentVolume - targetVolume) / steps;
+      const fadeTime = 300, steps = 30, volumeStep = (currentVolume - targetVolume) / steps;
       let stepCount = 0;
 
       const fadeInterval = setInterval(() => {
@@ -142,46 +186,35 @@
 
         if (stepCount >= steps) {
           clearInterval(fadeInterval);
-          if (callback) callback();
+          callback && callback();
         }
       }, fadeTime / steps);
     }
 
-    // Function to start the audio after user interaction or when the page loads
     function startAudio() {
-      // Only start audio if it's not muted
       if (!isMuted) {
         audio.volume = 1;
-        audio.play().catch((e) => {
+        audio.play().catch(() => {
           console.log("Auto-play blocked, retrying after user interaction.");
-          document.addEventListener("click", playAudioOnClick); // Retry after user interaction
-          document.addEventListener("touchstart", playAudioOnClick); // Retry on touch
+          document.addEventListener("click", playAudioOnClick);
+          document.addEventListener("touchstart", playAudioOnClick);
         });
       } else {
-        audio.volume = 0; // Keep audio muted if it is
+        audio.volume = 0;
       }
-
-      // Update the icon based on the muted state
       updateAudioIcon();
     }
 
-    // Function to handle retrying play after user interaction
     function playAudioOnClick() {
-      audio.play().catch((e) => console.log("Still blocked, please allow audio to play"));
-      document.removeEventListener("click", playAudioOnClick); // Remove listener after success
-      document.removeEventListener("touchstart", playAudioOnClick); // Remove listener after success
+      audio.play().catch(() => console.log("Still blocked, please allow audio to play"));
+      document.removeEventListener("click", playAudioOnClick);
+      document.removeEventListener("touchstart", playAudioOnClick);
     }
 
-    // Update the audio icon based on the muted state
     function updateAudioIcon() {
-      if (isMuted) {
-        audioIcon.src = 'images/SPEAKER-1.webp'; // Muted icon
-      } else {
-        audioIcon.src = 'images/SPEAKER-2.webp'; // Unmuted icon
-      }
+      audioIcon.src = isMuted ? 'images/SPEAKER-1.webp' : 'images/SPEAKER-2.webp';
     }
 
-    // Toggle background music and update icon when div is clicked
     audioToggle.addEventListener("click", () => {
       if (audio.paused) {
         audio.volume = 0;
@@ -192,13 +225,10 @@
         fadeAudio(0, () => audio.pause());
         isMuted = true;
       }
-
-      // Update the icon and store the muted state
       localStorage.setItem('audioMuted', isMuted.toString());
       updateAudioIcon();
     });
 
-    // Handle mouse click event
     function handleClickEvent() {
       if (!isMuted) clickSound.play();
     }
@@ -207,7 +237,6 @@
       if (!isMuted) releaseSound.play();
     }
 
-    // Handle touch events for small screens (<= 700px)
     function handleTouchEvents() {
       if (window.innerWidth <= 700) {
         document.addEventListener("touchstart", handleClickEvent);
@@ -218,7 +247,6 @@
       }
     }
 
-    // Handle mouse events for large screens (> 700px)
     function handleMouseEvents() {
       if (window.innerWidth > 700) {
         document.addEventListener("mousedown", handleClickEvent);
@@ -229,17 +257,14 @@
       }
     }
 
-    // Initial event listener setup
     handleTouchEvents();
     handleMouseEvents();
 
-    // Recheck and adjust listeners on window resize
     window.addEventListener("resize", () => {
       handleTouchEvents();
       handleMouseEvents();
     });
 
-    // Initialize the audio and icon based on the muted state
     updateAudioIcon();
 
   </script>
