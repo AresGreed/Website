@@ -30,6 +30,7 @@ html,
 body {
   overflow: hidden;
   background-color: #ADF0F0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 img::selection {
@@ -266,5 +267,43 @@ img::selection {
 
   100% {
     transform: rotate(0deg);
+  }
+}
+
+.clouds {
+  position: absolute;
+  bottom: -140px;
+  height: 200px;
+  width: auto;
+  z-index: 999;
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .background-image-container {
+    padding-left: 20px;
+    padding-bottom: 60px;
+  }
+
+  .background-image {
+    height: 93vh;
+  }
+
+  .image-holder {
+    height: 74vh;
+  }
+
+  .clouds {
+    display: block;
+  }
+
+  .lottie-box {
+    width: 40px;
+    height: 40px;
+  }
+
+  #audio-icon {
+    width: 50px;
+    height: 50px;
   }
 }
