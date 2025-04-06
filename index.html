@@ -401,38 +401,140 @@
     </div>
   </div>
 
+
+
+
+
+
+
+
   <div id="section-tes">
     <div class="tes-container">
       <div class="tes-title">
         <h1 id="spartan">What our clients say</h1>
       </div>
-      <div class="testies">
-        <div class="first-tes" id="tes-fill">
-          <img src="images/pfp.png" class="tes-pfp">
-          <h3 class="tes-text" id="quicksand">Sprout Marketing has been an absolute pleasure to work with. They are very
-            responsive to our needs and have a great understanding of the nuances of Web3 marketing with content
-            creation and getting social engagement.</h3>
-          <p class="tes-name" id="spartan">Jeff</p>
-          <p class="tes-eta" id="spartan">Founder @ Steadefi</p>
+  
+      <div class="tes-wrapper">
+        <div class="fade-left"></div>
+        <div class="fade-right"></div>
+  
+        <button class="arrow-btn left" id="leftArrow">
+          <img src="images/Left arrow.svg" alt="Previous">
+        </button>
+  
+        <div class="testimonials-scroll" id="testimonialsScroll">
+          <div class="testimonial-card">
+            <img src="images/pfp.png" class="tes-pfp">
+            <h3 class="tes-text" id="quicksand">
+              Sprout Marketing has been an absolute pleasure to work with. They are
+          very responsive to our needs and have a great understanding of the nuances of Web3 marketing with content
+          creation and getting social engagement.
+            <p class="tes-name" id="spartan">Jeff</p>
+            <p class="tes-eta" id="spartan">Founder @ Steadefi</p>
+          </div>
+  
+          <div class="testimonial-card">
+            <img src="images/pfp 2.png" class="tes-pfp">
+            <h3 class="tes-text" id="quicksand">
+              Working with Sprout Marketing has been a game-changer for our brand!
+          Their seamless communication, strategic adaptability, and high-quality content drove a 200% boost in our X
+          audience and engagement, plus a 500% surge in impressions within just the first month. Their results speak for
+          themselves—truly outstanding!
+            </h3>
+            <p class="tes-name" id="spartan">Pryia</p>
+            <p class="tes-eta" id="spartan">Operations @ tastycrypto</p>
+          </div>
+  
+          <div class="testimonial-card">
+            <img src="images/pfp_last.jpg" class="tes-pfp" style="border-radius: 9999px;">
+            <h3 class="tes-text" id="quicksand">
+              Sprout Marketing's grind has been incredible. Working with Ares and his team has been extremely effective in growing the VaultCraft community in a matter of weeks.
+            </h3>
+            <p class="tes-name" id="spartan">Michael</p>
+            <p class="tes-eta" id="spartan">Founder @ VaultCraft</p>
+          </div>
+
+          <div class="testimonial-card">
+            <img src="images/tg_image_1966600434.png" class="tes-pfp" style="border-radius: 9999px;">
+            <h3 class="tes-text" id="quicksand">
+              Ares and the Sprout team was instrumental in igniting and growing the DrPepe.ai community with relentless energy and sharp strategy. His ability to rally people around the mission made a lasting impact.
+            </h3>
+            <p class="tes-name" id="spartan">Dr Pepe AI Team</p>
+          </div>
+
+          <div class="testimonial-card">
+            <img src="images/SawndUWo_400x400.jpg" class="tes-pfp" style="border-radius: 9999px;">
+            <h3 class="tes-text" id="quicksand">
+              Sprout was excellent at supporting the build of foundational visual assets and social media at Harold. They later kickstarted our Instagram and TikTok, delivering great value for money in a transparent and trusted way. In between all the scammers and overpriced marketing agencies and consultants, Sprout is a beacon of light 💡
+            </h3>
+            <p class="tes-name" id="spartan">Kevin</p>
+            <p class="tes-eta" id="spartan">CTO @ Harold</p>
+          </div>
+  
+          
         </div>
-        <div class="first-tes" id="tes-fill">
-          <img src="images/pfp 2.png" class="tes-pfp">
-          <h3 class="tes-text" id="quicksand">Working with Sprout Marketing has been a game-changer for our brand! Their
-            seamless communication, strategic adaptability, and high-quality content drove a 200% boost in our X
-            audience and engagement, plus a 500% surge in impressions within just the first month. Their results speak
-            for themselves—truly outstanding!</h3>
-          <p class="tes-name" id="spartan">Pryia</p>
-          <p class="tes-eta" id="spartan">Operations @ tastycrypto</p>
-        </div>
-        <div class="first-tes" id="tes-fill">
-          <img src="images/pfp_last.jpg" class="tes-pfp" style="border-radius: 9999px;">
-          <h3 class="tes-text" id="quicksand">Sprout Marketing's grind has been incredible. Working with Ares and his team has been extremely effective in growing the VaultCraft community in a matter of weeks.</h3>
-          <p class="tes-name" id="spartan">Michael</p>
-          <p class="tes-eta" id="spartan">Founder @ VaultCraft</p>
-        </div>
+  
+        <button class="arrow-btn right" id="rightArrow">
+          <img src="images/Right arrow.svg" alt="Next">
+        </button>
       </div>
     </div>
   </div>
+  
+  
+  
+  
+  
+  <script>
+const scrollContainer = document.getElementById("testimonialsScroll");
+const leftArrow = document.getElementById("leftArrow");
+const rightArrow = document.getElementById("rightArrow");
+
+let isMoving = false;
+
+function smoothScroll() {
+  const scrollWidth = scrollContainer.scrollWidth;
+  const containerWidth = scrollContainer.clientWidth;
+  const scrollPosition = scrollContainer.scrollLeft;
+
+  if (scrollPosition + containerWidth >= scrollWidth) {
+    rightArrow.style.opacity = '0';
+  } else {
+    rightArrow.style.opacity = '1';
+  }
+
+  isMoving = false;
+}
+
+window.addEventListener('load', smoothScroll);
+window.addEventListener('resize', smoothScroll);
+
+leftArrow.addEventListener('click', () => {
+  if (isMoving) return;
+  scrollContainer.scrollLeft -= 400;
+  smoothScroll();
+});
+
+rightArrow.addEventListener('click', () => {
+  if (isMoving) return;
+  scrollContainer.scrollLeft += 400;
+  
+  leftArrow.style.opacity = '1'; 
+
+  smoothScroll();
+});
+
+  </script>
+  
+  
+  
+  
+  
+
+
+
+
+
 
   <div class="custom-slider" id="tes-mobile">
     <div class="custom-slider-header-title">
@@ -462,18 +564,46 @@
         <p class="tes-mob-name" id="spartan">Pryia</p>
         <p class="tes-mob-eta" id="spartan">Operations @ tastycrypto</p>
       </div>
-      <div class="custom-slide" >
 
+
+      <div class="custom-slide" >
         <img src="images/pfp_last.jpg" class="tes-mob-pfp" style=" border-radius: 99999px;">
         <p id="quicksand" class="mob-tes-text">Sprout Marketing's grind has been incredible. Working with Ares and his team has been extremely effective in growing the VaultCraft community in a matter of weeks.</p>
         <p class="tes-mob-name" id="spartan">Michael</p>
         <p class="tes-mob-eta" id="spartan">Founder @ VaultCraft</p>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div class="custom-slide" >
+        <img src="images/tg_image_1966600434.png" class="tes-mob-pfp" style=" border-radius: 99999px;">
+        <p id="quicksand" class="mob-tes-text">Ares and the Sprout team was instrumental in igniting and growing the DrPepe.ai community with relentless energy and sharp strategy. His ability to rally people around the mission made a lasting impact.</p>
+        <p class="tes-mob-name" id="spartan">Dr Pepe AI Team<</p>
+      </div>
+
+      <div class="custom-slide" >
+        <img src="images/SawndUWo_400x400.jpg" class="tes-mob-pfp" style=" border-radius: 99999px;">
+        <p id="quicksand" class="mob-tes-text">Sprout was excellent at supporting the build of foundational visual assets and social media at Harold. They later kickstarted our Instagram and TikTok, delivering great value for money in a transparent and trusted way. In between all the scammers and overpriced marketing agencies and consultants, Sprout is a beacon of light 💡</p>
+        <p class="tes-mob-name" id="spartan">Kevin</p>
+        <p class="tes-mob-eta" id="spartan">CTO @ Harold</p>
+      </div>
+
+
     </div>
     <div class="custom-dots">
       <span class="custom-dot" onclick="currentCustomSlide(1)"></span>
       <span class="custom-dot" onclick="currentCustomSlide(2)"></span>
       <span class="custom-dot" onclick="currentCustomSlide(3)"></span>
+      <span class="custom-dot" onclick="currentCustomSlide(4)"></span>
+      <span class="custom-dot" onclick="currentCustomSlide(5)"></span>
     </div>
   </div>
 

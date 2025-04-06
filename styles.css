@@ -257,13 +257,6 @@ nav.visible {
   position: relative;
 }
 
-#section-tes {
-  display: flex;
-  justify-content: center;
-  height: fit-content;
-  position: relative;
-  margin-top: 128px;
-}
 
 #section-off {
   display: flex;
@@ -426,7 +419,6 @@ nav.visible {
   position: absolute;
   width: 100%;
   bottom: 0;
-  /* Align the grid image to the bottom of the section */
   z-index: -999;
 }
 
@@ -436,7 +428,6 @@ nav.visible {
   object-fit: cover;
   position: absolute;
   bottom: 0;
-  /* Ensure the image itself is aligned to the bottom */
 }
 
 
@@ -858,7 +849,7 @@ nav.visible {
 
 .cmm-bakcground-full {
   background: linear-gradient(180deg, #151917 50%, #5C8E6E 171.41%);
-  box-shadow: 0px 27px 81.1px -3px rgba(0, 0, 0, 0.28);
+  box-shadow: 0px 1px 81.1px -3px rgba(0, 0, 0, 0.28);
   width: 100vw;
   align-items: center;
   display: flex;
@@ -914,67 +905,154 @@ nav.visible {
 
 
 
+#section-tes {
+  display: flex;
+  justify-content: center;
+  margin-top: 128px;
+  position: relative;
+  padding: 0 24px;
+}
+
 .tes-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 1280px;
 }
 
 .tes-title {
   margin-bottom: 64px;
 }
 
-
-.testies {
-  display: flex;
-  gap: 64px;
-  flex-wrap: wrap;
-  /* Allows items to wrap to the next line */
-  justify-content: center;
-  /* Centers items horizontally when they wrap */
-}
-
-#tes-fill {
-  height: fit-content;
-  width: 380px;
-  border-radius: 20px;
-  background: #FFF;
-  box-shadow: 0px 3px 26.5px 0px rgba(0, 0, 0, 0.25);
+.tes-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  padding: 32px;
-  transition: box-shadow 0.15s ease-in-out
 }
 
-#tes-fill:hover {
-  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.3);
+.testimonials-scroll {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 48px;
+  scrollbar-width: none;
+
+}
+
+.testimonials-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card {
+  flex: 0 0 360px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 360px;
+  
 }
 
 .tes-pfp {
-  height: 120px;
-  width: auto;
-  margin-bottom: 42px;
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 9999px;
+  margin-bottom: 24px;
+  /* border: 1px solid rgba(209, 209, 209, 0.602); */
 }
 
 .tes-text {
-  font-size: 24px;
-  margin-bottom: 32px;
-  line-height: 130%;
-  letter-spacing: -0.2px;
+  font-size: 17px;
+  line-height: 150%;
+  margin-bottom: 24px;
+  text-align: left;
+  color: #333;
 }
 
 .tes-name {
   font-weight: 700;
-  font-size: 36px;
-  margin-bottom: 8px;
+  font-size: 22px;
+  margin-bottom: 4px;
 }
 
 .tes-eta {
-  font-size: 24px;
-  color: rgba(184, 184, 184, 1);
+  font-size: 16px;
+  color: #999;
 }
+
+/* Arrows */
+.arrow-btn {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.arrow-btn.left {
+  left: 0;
+}
+
+.arrow-btn.right {
+  right: 0;
+}
+
+.arrow-btn img {
+  height: 36px;
+  width: 36px;
+}
+
+
+.fade-left,
+.fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 3;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, #fff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    flex: 0 0 85%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
